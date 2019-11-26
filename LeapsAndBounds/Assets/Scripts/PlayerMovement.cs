@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
         MovementInputs();
         PassiveMovement();
 
-        transform.position += new Vector3(velX, velY)*Time.deltaTime;
+        transform.position += new Vector3(velX, velY) * Time.deltaTime;
 
     }
 
@@ -45,14 +45,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
-            velX -= accX*Time.deltaTime*sprintMod;
+            velX -= accX * Time.deltaTime * sprintMod;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            velX += accX*Time.deltaTime*sprintMod;
+            velX += accX * Time.deltaTime * sprintMod;
         }
 
-        velX = Mathf.Min(Mathf.Abs(velX), maxX)*Mathf.Sign(velX);
+        velX = Mathf.Min(Mathf.Abs(velX), maxX) * Mathf.Sign(velX);
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -108,7 +108,8 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (velY > 0) {
+        if (velY > 0)
+        {
             for (int i = -1; i < 1; i++)
             {
                 if (Physics2D.Raycast(transform.position + new Vector3((i * 0.3f), 0), Vector2.up, 0.33f, groundLayers).collider != null)
@@ -121,16 +122,25 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
-        if (IsGrounded()) {
+        if (IsGrounded())
+        {
             velY = jumpVel;
         }
+    }
+
+    public void BouncePad()
+    {
+
+        velY = jumpVel;
+
+
     }
 
     bool IsGrounded()
     {
         for (int i = -1; i <= 1; i++)
         {
-            if (Physics2D.Raycast(transform.position + new Vector3((i*0.3f),0), Vector2.down, 0.33f, groundLayers).collider != null)
+            if (Physics2D.Raycast(transform.position + new Vector3((i * 0.3f), 0), Vector2.down, 0.33f, groundLayers).collider != null)
             {
                 return true;
             }
