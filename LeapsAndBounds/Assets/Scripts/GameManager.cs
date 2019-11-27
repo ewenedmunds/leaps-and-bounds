@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        highscoreText.text = "High: "+PlayerPrefs.GetInt("Highscore", 0).ToString();
     }
 
     // Update is called once per frame
@@ -51,6 +51,17 @@ public class GameManager : MonoBehaviour
         if (amount >= 0)
         {
             score += amount;
+        }
+    }
+
+    public void RecordScore()
+    {
+        int scoreI = Mathf.RoundToInt(score);
+
+        if (scoreI > PlayerPrefs.GetInt("Highscore", 0))
+        {
+            PlayerPrefs.SetInt("Highscore", scoreI);
+            highscoreText.text = "High: " + scoreI.ToString();
         }
     }
 
