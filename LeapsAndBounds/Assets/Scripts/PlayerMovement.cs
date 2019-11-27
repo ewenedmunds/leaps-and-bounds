@@ -19,20 +19,38 @@ public class PlayerMovement : MonoBehaviour
 
     public LayerMask groundLayers;
 
+    private bool isAlive = true;
+
+    public Sprite spriteMoveR;
+    public Sprite spriteMoveL;
+    public Sprite spriteJump;
+    public Sprite spriteDead;
+
+    private SpriteRenderer sr;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        sr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        MovementInputs();
+        if (isAlive)
+        {
+            MovementInputs();
+        }
         PassiveMovement();
 
         transform.position += new Vector3(velX, velY) * Time.deltaTime;
 
+    }
+
+    public void SetAlive(bool value)
+    {
+        isAlive = value;
+        sr.sprite = spriteDead;
     }
 
     void MovementInputs()
@@ -46,10 +64,18 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             velX -= accX * Time.deltaTime * sprintMod;
+            if (isAlive)
+            {
+                sr.sprite = spriteMoveL;
+            }
         }
         if (Input.GetKey(KeyCode.D))
         {
             velX += accX * Time.deltaTime * sprintMod;
+            if (isAlive)
+            {
+                sr.sprite = spriteMoveR;
+            }
         }
 
         velX = Mathf.Min(Mathf.Abs(velX), maxX) * Mathf.Sign(velX);
@@ -110,6 +136,10 @@ public class PlayerMovement : MonoBehaviour
 
         if (velY > 0)
         {
+            if (isAlive)
+            {
+                sr.sprite = spriteJump;
+            }
             for (int i = -1; i < 1; i++)
             {
                 if (Physics2D.Raycast(transform.position + new Vector3((i * 0.3f), 0), Vector2.up, 0.33f, groundLayers).collider != null)
@@ -131,7 +161,7 @@ public class PlayerMovement : MonoBehaviour
     public void BouncePad()
     {
 
-        velY = jumpVel;
+        velY = jumpVel*1.5f;
 
 
     }
