@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
 
     public void AddScore(int amount)
     {
-        if (amount >= 0)
+        if (amount >= 0 && state == GameState.Running)
         {
             score += amount;
         }

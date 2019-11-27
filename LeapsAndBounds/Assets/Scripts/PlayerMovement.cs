@@ -155,7 +155,11 @@ public class PlayerMovement : MonoBehaviour
         if (IsGrounded())
         {
             velY = jumpVel;
+
+            GetComponent<AudioSource>().Play();
         }
+
+
     }
 
     public void BouncePad()
@@ -163,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
 
         velY = jumpVel*1.5f;
 
-
+        GetComponent<AudioSource>().Play();
     }
 
     bool IsGrounded()
