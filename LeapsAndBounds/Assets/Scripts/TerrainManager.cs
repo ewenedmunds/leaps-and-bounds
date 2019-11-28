@@ -6,6 +6,7 @@ public class TerrainManager : MonoBehaviour
 {
     public GameManager manager;
     public GameObject terrainHolder;
+    public GameObject parallaxHolder;
 
     private float movementSpeed = 1;
     public float terrainAcceleration;
@@ -14,6 +15,9 @@ public class TerrainManager : MonoBehaviour
     public GameObject[] terrainPiecesEasy;
     public GameObject[] terrainPiecesMedium;
     public GameObject[] terrainPiecesHard;
+
+    public GameObject[] parallaxObjects;
+    private float parallaxTimer;
 
     private float timer;
     public int[] thresholds;
@@ -31,6 +35,18 @@ public class TerrainManager : MonoBehaviour
             for (int i = 0; i < terrainHolder.transform.childCount; i++)
             {
                 terrainHolder.transform.GetChild(i).transform.Translate(new Vector3(-movementSpeed, 0, 0) * Time.deltaTime);
+            }
+            for (int i = 0; i < parallaxHolder.transform.childCount; i++)
+            {
+                parallaxHolder.transform.GetChild(i).transform.Translate(new Vector3(-movementSpeed*0.1f*(10- parallaxHolder.transform.GetChild(i).transform.position.z), 0, 0) * Time.deltaTime);
+            }
+
+            parallaxTimer -= Time.deltaTime*movementSpeed;
+            if (parallaxTimer <= 0)
+            {
+                parallaxTimer = Random.Range(2f,5f);
+                GameObject newParallax = Instantiate(parallaxObjects[Random.Range(0, parallaxObjects.Length)],parallaxHolder.transform);
+                newParallax.transform.position = new Vector3(10, 0, Random.Range(3, 8));
             }
         }
     }
@@ -50,8 +66,5 @@ public class TerrainManager : MonoBehaviour
         {
             GameObject newTerrain = Instantiate(terrainPiecesEasy[Random.Range(0, terrainPiecesEasy.Length)], terrainHolder.transform);
         }
-
-
-
     }
 }
