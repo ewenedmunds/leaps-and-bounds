@@ -11,13 +11,20 @@ public class TerrainManager : MonoBehaviour
     public float terrainAcceleration;
     public float terrainMaxSpeed;
 
-    public GameObject[] terrainPieces;
+    public GameObject[] terrainPiecesEasy;
+    public GameObject[] terrainPiecesMedium;
+    public GameObject[] terrainPiecesHard;
+
+    private float timer;
+    public int[] thresholds;
 
     // Update is called once per frame
     void Update()
     {
         if (manager.state == GameState.Running)
         {
+            timer += Time.deltaTime;
+
             movementSpeed += terrainAcceleration*Time.deltaTime;
             movementSpeed = Mathf.Min(movementSpeed, terrainMaxSpeed);
 
@@ -31,7 +38,19 @@ public class TerrainManager : MonoBehaviour
     public void NewTerrain()
     {
         Debug.Log("New Terrain Generating!");
-        GameObject newTerrain = Instantiate(terrainPieces[Random.Range(0, terrainPieces.Length)],terrainHolder.transform);
+        if (timer > thresholds[2] && Random.Range(0f, 2f) < 1f)
+        {
+            GameObject newTerrain = Instantiate(terrainPiecesHard[Random.Range(0, terrainPiecesHard.Length)], terrainHolder.transform);
+        }
+        else if (timer > thresholds[1] && Random.Range(0f, 2f) < 1f)
+        {
+            GameObject newTerrain = Instantiate(terrainPiecesMedium[Random.Range(0, terrainPiecesMedium.Length)], terrainHolder.transform);
+        }
+        else
+        {
+            GameObject newTerrain = Instantiate(terrainPiecesEasy[Random.Range(0, terrainPiecesEasy.Length)], terrainHolder.transform);
+        }
+
 
 
     }

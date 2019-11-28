@@ -28,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
 
     private SpriteRenderer sr;
 
+    private float coyoteTime = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -120,6 +122,7 @@ public class PlayerMovement : MonoBehaviour
         //Gravity
         if (!IsGrounded())
         {
+            coyoteTime -= Time.deltaTime;
             velY += accY * Time.deltaTime;
             if (velY <= 0)
             {
@@ -128,6 +131,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            coyoteTime = 0.15f;
             if (velY < 0)
             {
                 velY = 0;
@@ -152,10 +156,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
-        if (IsGrounded())
+        if (coyoteTime > 0 && velY < 5)
         {
             velY = jumpVel;
-
+            coyoteTime = 0;
             GetComponent<AudioSource>().Play();
         }
 
