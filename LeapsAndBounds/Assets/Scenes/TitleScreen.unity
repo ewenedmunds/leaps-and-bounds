@@ -1376,7 +1376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b886c2ef3a0b9488db2922ad7a76eb3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boundSpeed: 0.06
+  boundSpeed: 0.05
   maxBoundDistance: 6.5
   leftBound: {fileID: 98844122}
   rightBound: {fileID: 889343273}
@@ -2346,7 +2346,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Leaps and Bounds
+  m_text: Jungle Jump
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7f465a03e05e241dc8b4940b6f29905a, type: 2}
   m_sharedMaterial: {fileID: -594254336784473356, guid: 7f465a03e05e241dc8b4940b6f29905a,
@@ -2375,7 +2375,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 26.4
+  m_fontSize: 38.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2416,10 +2416,10 @@ MonoBehaviour:
   m_margin: {x: -50, y: 0, z: -50, w: 0}
   m_textInfo:
     textComponent: {fileID: 658314438}
-    characterCount: 16
+    characterCount: 11
     spriteCount: 0
-    spaceCount: 2
-    wordCount: 3
+    spaceCount: 1
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1
