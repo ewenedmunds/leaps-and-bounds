@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
             sprintMod = 3;
         }
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             velX -= accX * Time.deltaTime * sprintMod;
             if (isAlive)
@@ -74,15 +74,16 @@ public class PlayerMovement : MonoBehaviour
                 sr.sprite = spriteMoveL;
             }
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             velX += accX * Time.deltaTime * sprintMod;
             if (isAlive)
             {
                 sr.sprite = spriteMoveR;
             }
+
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             if (!IsGrounded())
             {
@@ -92,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
 
         velX = Mathf.Min(Mathf.Abs(velX), maxX) * Mathf.Sign(velX);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             Jump();
         }
@@ -138,17 +139,30 @@ public class PlayerMovement : MonoBehaviour
             {
                 velY = Mathf.Max(velY, maxY);
             }
+            GetComponent<ParticleSystem>().Stop();
         }
         else
         {
             coyoteTime = 0.15f;
             if (velY < 0)
             {
+                if (velY < -3)
+                {
+                    sr.gameObject.GetComponent<Animator>().Play("PlayerSquish");
+                }
                 velY = 0;
             }
             if (Mathf.Abs(velX) < 0.2f && isAlive)
             {
                 sr.sprite = spriteNormal;
+            }
+            if (Mathf.Abs(velX) > 2 && !GetComponent<ParticleSystem>().isPlaying)
+            {
+                GetComponent<ParticleSystem>().Play();
+            }
+            else if (Mathf.Abs(velX) <= 2)
+            {
+                GetComponent<ParticleSystem>().Stop();
             }
         }
 
