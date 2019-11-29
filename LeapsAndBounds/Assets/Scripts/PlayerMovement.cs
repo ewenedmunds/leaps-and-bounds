@@ -27,14 +27,16 @@ public class PlayerMovement : MonoBehaviour
     public Sprite spriteDead;
     public Sprite spriteNormal;
 
-    private SpriteRenderer sr;
+    public GameObject jumpGhost;
+
+    public SpriteRenderer sr;
 
     private float coyoteTime = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        sr = GetComponent<SpriteRenderer>();
+       
     }
 
     // Update is called once per frame
@@ -144,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 velY = 0;
             }
-            if (Mathf.Abs(velX) < 0.2f)
+            if (Mathf.Abs(velX) < 0.2f && isAlive)
             {
                 sr.sprite = spriteNormal;
             }
@@ -182,8 +184,49 @@ public class PlayerMovement : MonoBehaviour
     {
 
         velY = jumpVel*1.5f;
-
+        StartCoroutine("Ghosts");
         GetComponent<AudioSource>().Play();
+
+        if (Random.Range(1,3) == 1 && isAlive)
+        {
+            sr.gameObject.GetComponent<Animator>().Play("PlayerSpriteSpinL");
+        }
+        else if (isAlive)
+        {
+            sr.gameObject.GetComponent<Animator>().Play("PlayerSpriteSpinR");
+        }
+    }
+
+    IEnumerator Ghosts()
+    {
+        CreateGhost();
+        yield return new WaitForSeconds(0.05f);
+        CreateGhost();
+        yield return new WaitForSeconds(0.05f);
+        CreateGhost();
+        yield return new WaitForSeconds(0.05f);
+        CreateGhost();
+        yield return new WaitForSeconds(0.05f);
+        CreateGhost();
+        yield return new WaitForSeconds(0.05f);
+        CreateGhost();
+        yield return new WaitForSeconds(0.05f);
+        CreateGhost();
+        yield return new WaitForSeconds(0.05f);
+        CreateGhost();
+        yield return new WaitForSeconds(0.05f);
+        CreateGhost();
+        yield return new WaitForSeconds(0.05f);
+        CreateGhost();
+        yield return new WaitForSeconds(0.05f);
+        CreateGhost();
+    }
+
+    void CreateGhost()
+    {
+        GameObject newGhost = Instantiate(jumpGhost);
+        newGhost.transform.position = transform.position;
+        newGhost.transform.parent = transform.parent;
     }
 
     bool IsGrounded()

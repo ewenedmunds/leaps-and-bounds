@@ -9,6 +9,7 @@ public class BouncePad : MonoBehaviour
         if (other.tag == "Player")
         {
             other.SendMessage("BouncePad");
+            transform.parent.gameObject.GetComponent<ParticleSystem>().Play();
         }
     }
 }

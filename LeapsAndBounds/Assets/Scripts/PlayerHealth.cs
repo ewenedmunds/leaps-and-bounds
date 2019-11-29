@@ -17,6 +17,7 @@ public class PlayerHealth : MonoBehaviour
             GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>().state = GameState.Finished;
             GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>().RecordScore();
             UIAnim.Play("UIGameOver");
+            Camera.main.GetComponent<Animator>().Play("CameraShake");
         }
     }
 }

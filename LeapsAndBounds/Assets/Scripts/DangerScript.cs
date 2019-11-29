@@ -15,6 +15,7 @@ public class DangerScript : MonoBehaviour
             {
                 GetComponent<SpriteRenderer>().sprite = hitSprite;
             }
+
         }
     }
 }
