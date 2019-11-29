@@ -1376,7 +1376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b886c2ef3a0b9488db2922ad7a76eb3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boundSpeed: 0.1
+  boundSpeed: 0.06
   maxBoundDistance: 6.5
   leftBound: {fileID: 98844122}
   rightBound: {fileID: 889343273}
@@ -1828,8 +1828,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 586282566}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.15, y: -0.33, z: 0}
-  m_LocalScale: {x: 20, y: 20, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 4.5, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -3790,17 +3790,25 @@ MonoBehaviour:
   - {fileID: 5790992465523789069, guid: 7ece54e76026648bb9791cc868c1b9b5, type: 3}
   - {fileID: 5790992465523789069, guid: 089e559a122474b5d92bcf3ba70a36ec, type: 3}
   - {fileID: 5790992465523789069, guid: 8c54c942cb6134eb48d2a33286fc34fd, type: 3}
+  - {fileID: 5790992465523789069, guid: 56317a0af0189444682449e16565ef32, type: 3}
+  - {fileID: 5790992465523789069, guid: a8439eee07e594dc5b896ab9c61cca41, type: 3}
   terrainPiecesMedium:
   - {fileID: 5790992465523789069, guid: 3f95dd6d9bcb246d79123a1fa651a6ba, type: 3}
   - {fileID: 5790992465523789069, guid: fea4d1f970094404986bef4fa777d52f, type: 3}
   - {fileID: 5790992465523789069, guid: addeaa43053664047b8c4d379df4539a, type: 3}
   - {fileID: 5790992465523789069, guid: 2585425aae2774e6ea090fc83f3c6339, type: 3}
+  - {fileID: 5790992465523789069, guid: ae6c4e5688d63409eba8846163ada705, type: 3}
   terrainPiecesHard:
   - {fileID: 5790992465523789069, guid: 1e4e6569fbe1645a1b130cf8e6fec0dd, type: 3}
   - {fileID: 5790992465523789069, guid: cd7639e9ad4464c3ca191b05a83c302d, type: 3}
+  - {fileID: 5790992465523789069, guid: 91879e79ad11f473098c9c360c6bba2c, type: 3}
+  - {fileID: 5790992465523789069, guid: 17fc9d34c61554f32918cdb8eb0cb800, type: 3}
   parallaxObjects:
   - {fileID: 7775724675663044834, guid: 99886efa67af74c19a1f56b58a0f1085, type: 3}
   - {fileID: 7775724675663044834, guid: 99886efa67af74c19a1f56b58a0f1085, type: 3}
+  - {fileID: 7775724675663044834, guid: 99886efa67af74c19a1f56b58a0f1085, type: 3}
+  - {fileID: 7775724675663044834, guid: f4e87ed52bfa442d0bd615f35408864b, type: 3}
+  - {fileID: 7775724675663044834, guid: f4e87ed52bfa442d0bd615f35408864b, type: 3}
   thresholds: 000000001e0000003c000000
 --- !u!1001 &937446719
 PrefabInstance:
@@ -4602,7 +4610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.62136114, g: 0.6226415, b: 0.4728551, a: 0.392}
+  m_Color: {r: 0.62136114, g: 0.6226415, b: 0.4728551, a: 0.78431374}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -6953,6 +6961,8 @@ MonoBehaviour:
     A+D To move Left and Right
 
     Space to Jump
+
+    Hold S to limit your Jump Height
 
     Hold Shift to increase Accleration'
   m_isRightToLeft: 0

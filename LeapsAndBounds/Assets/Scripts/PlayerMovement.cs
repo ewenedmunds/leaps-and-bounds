@@ -79,6 +79,13 @@ public class PlayerMovement : MonoBehaviour
                 sr.sprite = spriteMoveR;
             }
         }
+        if (Input.GetKey(KeyCode.S))
+        {
+            if (!IsGrounded())
+            {
+                velY -= 6*Time.deltaTime;
+            }
+        }
 
         velX = Mathf.Min(Mathf.Abs(velX), maxX) * Mathf.Sign(velX);
 
@@ -105,14 +112,14 @@ public class PlayerMovement : MonoBehaviour
         {
             if (velX > 0)
             {
-                if (Physics2D.Raycast(transform.position + new Vector3(0, (i * 0.25f)), Vector2.right, 0.325f, groundLayers).collider != null)
+                if (Physics2D.Raycast(transform.position + new Vector3(0, (i * 0.22f)), Vector2.right, 0.325f, groundLayers).collider != null)
                 {
                     velX = 0;
                 }
             }
             else if (velX < 0)
             {
-                if (Physics2D.Raycast(transform.position + new Vector3(0, (i * 0.25f)), Vector2.left, 0.325f, groundLayers).collider != null)
+                if (Physics2D.Raycast(transform.position + new Vector3(0, (i * 0.22f)), Vector2.left, 0.325f, groundLayers).collider != null)
                 {
                     velX = 0;
                 }
