@@ -6993,7 +6993,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 21.3
+  m_fontSize: 19.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7034,12 +7034,12 @@ MonoBehaviour:
   m_margin: {x: -50, y: 0, z: -50, w: -66.18569}
   m_textInfo:
     textComponent: {fileID: 2030945561}
-    characterCount: 85
+    characterCount: 118
     spriteCount: 0
-    spaceCount: 14
-    wordCount: 16
+    spaceCount: 21
+    wordCount: 23
     linkCount: 0
-    lineCount: 4
+    lineCount: 5
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -7228,6 +7228,7 @@ MonoBehaviour:
   spriteMoveL: {fileID: 21300000, guid: c4f5de39391a04ffbb5fd722ffd39839, type: 3}
   spriteJump: {fileID: 21300000, guid: 5279bccf63fc04d798e2b7d90129ce52, type: 3}
   spriteDead: {fileID: 21300000, guid: 7e6ddae2a01644847af84a02e82ae9d3, type: 3}
+  spriteNormal: {fileID: 21300000, guid: a1885374e0f904b21bbaff18a62a70a5, type: 3}
 --- !u!114 &2052541863
 MonoBehaviour:
   m_ObjectHideFlags: 0

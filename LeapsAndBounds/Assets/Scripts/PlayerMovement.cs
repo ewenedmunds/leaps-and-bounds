@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     public Sprite spriteMoveL;
     public Sprite spriteJump;
     public Sprite spriteDead;
+    public Sprite spriteNormal;
 
     private SpriteRenderer sr;
 
@@ -142,6 +143,10 @@ public class PlayerMovement : MonoBehaviour
             if (velY < 0)
             {
                 velY = 0;
+            }
+            if (Mathf.Abs(velX) < 0.2f)
+            {
+                sr.sprite = spriteNormal;
             }
         }
 
